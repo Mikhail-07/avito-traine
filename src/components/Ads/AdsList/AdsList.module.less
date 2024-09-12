@@ -1,0 +1,27 @@
+.adsListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align items at the start */
+  gap: 16px; /* Space between cards */
+  padding: 16px 0;
+}
+
+.adCardWrapper {
+  flex: 1 1 calc(25% - 16px); /* Each card takes up 25% minus the gap */
+  max-width: calc(25% - 16px); /* Max width ensures no overflow */
+  
+  @media (max-width: 1200px) {
+    flex: 1 1 calc(33.33% - 16px); /* 3 cards per row on medium screens */
+    max-width: calc(33.33% - 16px);
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 calc(50% - 16px); /* 2 cards per row on small screens */
+    max-width: calc(50% - 16px);
+  }
+
+  @media (max-width: 576px) {
+    flex: 1 1 100%; /* 1 card per row on extra small screens */
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,27 @@
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // Отступ между строками поиска и фильтрации
+}
+
+.searchRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px; // Отступ между полем поиска и кнопкой сброса
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; // Отступы между фильтрами
+}
+
+.filterCol {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .filterRow {
+    flex-direction: column;
+  }
+}
