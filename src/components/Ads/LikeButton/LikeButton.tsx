@@ -14,7 +14,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ adId, initialLikes }) => {
   const [likes, setLikes] = useState(initialLikes);
   const [liked, setLiked] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { showError, showSuccess } = useNotification();
+  const { showError } = useNotification();
 
 
   useEffect(() => {
