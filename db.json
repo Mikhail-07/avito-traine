@@ -6,7 +6,7 @@
       "description": "Очень красивый",
       "price": 2000,
       "createdAt": "2022-08-12T20:16:55.351Z",
-      "views": 21,
+      "views": 24,
       "likes": 2,
       "imageUrl": ""
     },
@@ -85,6 +85,45 @@
       "price": 5999,
       "likes": 0,
       "views": 3
+    },
+    {
+      "id": "f855",
+      "imageUrl": "фывфыв",
+      "name": "фывфы",
+      "description": "фывфыв",
+      "price": 1312,
+      "likes": 0,
+      "views": 0
+    },
+    {
+      "id": "18be",
+      "imageUrl": "31231",
+      "name": "3123",
+      "description": "1231231",
+      "price": 132123,
+      "likes": 0,
+      "views": 0,
+      "createdAt": "2024-09-13T13:11:45.255Z"
+    },
+    {
+      "id": "5109",
+      "imageUrl": "йцуйцу",
+      "name": "йцуйцу",
+      "description": "йцуйц",
+      "price": 312312,
+      "likes": 0,
+      "views": 0,
+      "createdAt": "2024-09-13T13:14:59.748Z"
+    },
+    {
+      "id": "a31d",
+      "imageUrl": "123123",
+      "name": "12312",
+      "description": "123123",
+      "price": 12312,
+      "likes": 0,
+      "views": 0,
+      "createdAt": "2024-09-13T13:17:17.246Z"
     }
   ],
   "orders": [

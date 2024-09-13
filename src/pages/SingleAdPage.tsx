@@ -49,8 +49,13 @@ const AdvertisementPage: React.FC = () => {
   };
 
   if (loading) {
-    return <Spin tip="Loading advertisement..." />;
+    return (
+      <Spin tip="Loading advertisement...">
+        <div style={{ height: '100vh' }}></div>
+      </Spin>
+    );
   }
+  
 
   if (!advertisement) {
     return <div>Такого объявления не существует</div>;

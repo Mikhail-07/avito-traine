@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Form, Input, InputNumber } from 'antd';
 import { Advertisment } from '@api/types';
+import { useNotification } from '@hooks/index';
 
 interface NewAdModalProps {
   visible: boolean;
@@ -11,6 +12,7 @@ interface NewAdModalProps {
 
 const NewAdModal: React.FC<NewAdModalProps> = ({ visible, onCreate, onCancel, initialValues }) => {
   const [form] = Form.useForm();
+  const { showError } = useNotification();
 
   const handleOk = () => {
     form
@@ -19,10 +21,15 @@ const NewAdModal: React.FC<NewAdModalProps> = ({ visible, onCreate, onCancel, in
         onCreate(values);
         form.resetFields();
       })
-      .catch(errorInfo => {
-        console.error('Failed to create advertisement:', errorInfo);
-      });
+      .catch(showError);
   };
+
+  const formFields = [
+    { label: 'URL Картинки', name: 'imageUrl', component: <Input placeholder="Введите URL картинки" /> },
+    { label: 'Название', name: 'name', component: <Input placeholder="Введите название" /> },
+    { label: 'Описание', name: 'description', component: <Input.TextArea rows={3} placeholder="Введите описание" /> },
+    { label: 'Стоимость', name: 'price', component: <InputNumber min={0} placeholder="Введите стоимость" style={{ width: '100%' }} /> }
+  ];
 
   return (
     <Modal
@@ -34,37 +41,16 @@ const NewAdModal: React.FC<NewAdModalProps> = ({ visible, onCreate, onCancel, in
       cancelText="Отменить"
     >
       <Form form={form} layout="vertical" initialValues={initialValues}>
-        <Form.Item
-          label="URL Картинки"
-          name="imageUrl"
-          rules={[{ required: true, message: 'Пожалуйста, введите URL картинки!' }]}
-        >
-          <Input placeholder="Введите URL картинки" />
-        </Form.Item>
-
-        <Form.Item
-          label="Название"
-          name="name"
-          rules={[{ required: true, message: 'Пожалуйста, введите название!' }]}
-        >
-          <Input placeholder="Введите название" />
-        </Form.Item>
-
-        <Form.Item
-          label="Описание"
-          name="description"
-          rules={[{ required: true, message: 'Пожалуйста, введите описание!' }]}
-        >
-          <Input.TextArea rows={3} placeholder="Введите описание" />
-        </Form.Item>
-
-        <Form.Item
-          label="Стоимость"
-          name="price"
-          rules={[{ required: true, message: 'Пожалуйста, введите стоимость!' }]}
-        >
-          <InputNumber min={0} placeholder="Введите стоимость" style={{ width: '100%' }} />
-        </Form.Item>
+        {formFields.map(({ label, name, component }) => (
+          <Form.Item
+            key={name}
+            label={label}
+            name={name}
+            rules={[{ required: true, message: `Пожалуйста, введите ${label.toLowerCase()}!` }]}
+          >
+            {component}
+          </Form.Item>
+        ))}
       </Form>
     </Modal>
   );
