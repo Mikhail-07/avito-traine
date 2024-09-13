@@ -11,7 +11,6 @@ interface OrderFiltersProps {
 }
 
 const OrderFilters: React.FC<OrderFiltersProps> = ({ selectedStatus, sortOrder, onStatusChange, onSortOrderChange, onReset }) => {
-  // Преобразуем selectedStatus для корректного отображения
   const selectedStatusValue = selectedStatus !== null ? selectedStatus : '';
 
   return (
@@ -23,7 +22,7 @@ const OrderFilters: React.FC<OrderFiltersProps> = ({ selectedStatus, sortOrder, 
         allowClear
         style={{ width: 200, marginRight: 20 }}
       >
-        <Select.Option value="">Все</Select.Option> {/* Заменяем null на пустую строку */}
+        <Select.Option value="">Все</Select.Option>
         {(Object.keys(OrderStatus) as Array<keyof typeof OrderStatus>).map((key) => (
           <Select.Option key={OrderStatus[key]} value={OrderStatus[key]}>
             {key}

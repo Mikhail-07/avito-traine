@@ -15,7 +15,6 @@ const Navbar: React.FC = () => {
   };
 
   useEffect(() => {
-    // Automatically handle any side effects for route changes if needed
   }, [location.pathname]);
 
   const getSelectedKey = () => {

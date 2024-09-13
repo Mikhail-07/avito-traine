@@ -14,8 +14,8 @@ const { Search } = Input;
 const AdsFilters: React.FC<AdsFiltersProps> = ({ filters, onFiltersChange, onSearch, onReset }) => {
 const handleInputChange = (field: keyof Filters, value: number | null, index?: number) => {
   if (field === 'priceRange' && typeof index !== 'undefined') {
-    const updatedPriceRange = [...filters.priceRange]; // Копируем текущий массив
-    updatedPriceRange[index] = value; // Обновляем только изменённое значение (минимальную или максимальную цену)
+    const updatedPriceRange = [...filters.priceRange];
+    updatedPriceRange[index] = value;
     onFiltersChange({ priceRange: updatedPriceRange as [number | null, number | null] });
   } else {
     onFiltersChange({ [field]: value });
@@ -59,7 +59,7 @@ return (
             onChange={(e) => handleInputChange(
               filter.field as keyof Filters,
               e.target.value ? Number(e.target.value) : null,
-              filter.index // Передаём индекс для priceRange
+              filter.index
             )}
             className={styles.filterInput}
           />

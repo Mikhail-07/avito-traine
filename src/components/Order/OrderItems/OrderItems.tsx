@@ -1,6 +1,5 @@
 import React from 'react';
 import { OrderItem } from '@api/types';
-// import './OrderItems.css'; // подключение стилей
 
 interface OrderItemsProps {
   items: OrderItem[];
