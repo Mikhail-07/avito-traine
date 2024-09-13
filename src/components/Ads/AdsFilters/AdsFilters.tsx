@@ -59,7 +59,7 @@ return (
             onChange={(e) => handleInputChange(
               filter.field as keyof Filters,
               e.target.value ? Number(e.target.value) : null,
-              filter.index
+              filter.index // Передаём индекс для priceRange
             )}
             className={styles.filterInput}
           />
