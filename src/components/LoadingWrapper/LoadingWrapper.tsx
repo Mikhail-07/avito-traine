@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spin, Empty, Button } from 'antd';
 
 interface LoadingWrapperProps<T> {
@@ -18,7 +18,24 @@ const LoadingWrapper = <T,>({
   emptyDescription = 'Нет данных',
   children,
 }: LoadingWrapperProps<T>) => {
-  if (loading) {
+  const [showLoader, setShowLoader] = useState(false);
+
+  useEffect(() => {
+    const delay = 300;
+    let timeout: NodeJS.Timeout;
+
+    if (loading) {
+      timeout = setTimeout(() => {
+        setShowLoader(true);
+      }, delay);
+    } else {
+      setShowLoader(false);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [loading]);
+
+  if (loading && showLoader) {
     return (
       <div style={{ padding: '20px', textAlign: 'center' }}>
         <Spin size="large" />

@@ -13,7 +13,11 @@
     const [filters, setFilters] = useState(initialFilters);
   
     const updateFilters = (newFilters: Partial<typeof filters>) => {
-      setFilters((prev) => ({ ...prev, ...newFilters }));
+      setFilters((prev) => ({
+        ...prev,
+        ...newFilters,
+        currentPage: newFilters.currentPage !== undefined ? newFilters.currentPage : 0,
+      }));
     };
   
     const resetFilters = () => {
