@@ -1,13 +1,16 @@
 import React from 'react';
 import { Typography } from 'antd';
 import { AdsList, PaginationControls, AdsPerPageSelector, AdsFilters, AdsActions } from '@components/index';
-import { useAdvertisements, useAdFilters } from '@hooks/index';
+import { useAdvertisements, useAdFilters, useDebounce } from '@hooks/index';
 
 const { Title } = Typography;
 
 const AdsPage: React.FC = () => {
   const { filters, updateFilters, resetFilters } = useAdFilters();
-  const { ads, loading, error } = useAdvertisements(filters);
+  
+  const debouncedFilters = useDebounce(filters, 500);
+
+  const { ads, loading, error } = useAdvertisements(debouncedFilters);
 
   return (
     <div style={{ padding: '20px' }}>

@@ -10,7 +10,6 @@ interface AdsFiltersProps {
   onReset: () => void;
 }
 
-const { Search } = Input;
 const AdsFilters: React.FC<AdsFiltersProps> = ({ filters, onFiltersChange, onSearch, onReset }) => {
 const handleInputChange = (field: keyof Filters, value: number | null, index?: number) => {
   if (field === 'priceRange' && typeof index !== 'undefined') {
@@ -32,13 +31,12 @@ const filterFields = [
 return (
   <div className={styles.filtersContainer}>
     <div className={styles.searchRow}>
-      <Search
+      <Input
         className={styles.searchInput}
         placeholder="Поиск по названию"
         allowClear
-        enterButton="Поиск"
         size="large"
-        onSearch={onSearch}
+        onChange={(e) => onSearch(e.target.value)}
       />
       <Button 
         type="default" 
@@ -59,7 +57,7 @@ return (
             onChange={(e) => handleInputChange(
               filter.field as keyof Filters,
               e.target.value ? Number(e.target.value) : null,
-              filter.index // Передаём индекс для priceRange
+              filter.index
             )}
             className={styles.filterInput}
           />
