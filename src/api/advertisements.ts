@@ -6,7 +6,7 @@ export const fetchAdvertisements = (
   start = 0,
   limit = 10,
   search = '',
-  priceRange?: [number | null, number | null], // Указываем, что элементы могут быть либо числом, либо null
+  priceRange?: [number | null, number | null],
   views = 0,
   likes = 0
 ) => {
@@ -17,7 +17,6 @@ export const fetchAdvertisements = (
     likes_gte: likes 
   };
   
-  // Фильтрация по ценовому диапазону
   if (priceRange) {
     if (priceRange[0] !== null) {
       params.price_gte = priceRange[0];
@@ -27,7 +26,6 @@ export const fetchAdvertisements = (
     }
   }
 
-  // Добавляем поиск по названию
   if (search) {
     params.q = search; 
   }
